@@ -1,0 +1,24 @@
+<%- include("templates/header") %>
+
+<h1 class="mb-4">Admin Panel</h1>
+<h4 class="mb-3">All Users</h4>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for (let i = 0; i < users.length; i++) { %>
+        <%- include('templates/user', { user: users[i] }) %>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+
+<%- include("templates/footer") %>

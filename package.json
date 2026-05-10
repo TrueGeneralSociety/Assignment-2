@@ -1,0 +1,20 @@
+{
+  "name": "assignment-2",
+  "version": "1.0.0",
+  "description": "COMP 2537 Assignment 2",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "type": "commonjs",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "connect-mongo": "^6.0.0",
+    "dotenv": "^17.4.2",
+    "ejs": "^3.1.10",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "joi": "^18.2.1",
+    "mongodb": "^7.2.0"
+  }
+}
