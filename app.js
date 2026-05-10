@@ -57,7 +57,7 @@ app.use(
       maxAge: 60 * 60 * 1000,
       secure: false,
     },
-  })
+  }),
 );
 
 // Auth middleware
@@ -96,7 +96,8 @@ app.post("/signupSubmit", async (req, res) => {
 
   if (!name) return res.render("signup", { error: "Name is required." });
   if (!email) return res.render("signup", { error: "Email is required." });
-  if (!password) return res.render("signup", { error: "Password is required." });
+  if (!password)
+    return res.render("signup", { error: "Password is required." });
 
   const schema = Joi.object({
     name: Joi.string().max(50).required(),
@@ -105,11 +106,17 @@ app.post("/signupSubmit", async (req, res) => {
   });
 
   const { error } = schema.validate({ name, email, password });
-  if (error) return res.render("signup", { error: "Invalid input. Please try again." });
+  if (error)
+    return res.render("signup", { error: "Invalid input. Please try again." });
 
   const passwordHash = await bcrypt.hash(password, 10);
 
-  await userCollection.insertOne({ name, email, passwordHash, user_type: "user" });
+  await userCollection.insertOne({
+    name,
+    email,
+    passwordHash,
+    user_type: "user",
+  });
 
   req.session.userId = email;
   req.session.name = name;
@@ -133,10 +140,16 @@ app.post("/loginSubmit", async (req, res) => {
   if (error) return res.render("login", { error: "Invalid input." });
 
   const user = await userCollection.findOne({ email });
-  if (!user) return res.render("login", { error: "Invalid email/password combination." });
+  if (!user)
+    return res.render("login", {
+      error: "Invalid email/password combination.",
+    });
 
   const match = await bcrypt.compare(password, user.passwordHash);
-  if (!match) return res.render("login", { error: "Invalid email/password combination." });
+  if (!match)
+    return res.render("login", {
+      error: "Invalid email/password combination.",
+    });
 
   req.session.userId = user.email;
   req.session.name = user.name;
@@ -169,7 +182,7 @@ app.post("/admin/promote", requireAdmin, async (req, res) => {
 
   await userCollection.updateOne(
     { email: req.body.email },
-    { $set: { user_type: "admin" } }
+    { $set: { user_type: "admin" } },
   );
   res.redirect("/admin");
 });
@@ -181,7 +194,7 @@ app.post("/admin/demote", requireAdmin, async (req, res) => {
 
   await userCollection.updateOne(
     { email: req.body.email },
-    { $set: { user_type: "user" } }
+    { $set: { user_type: "user" } },
   );
   res.redirect("/admin");
 });
