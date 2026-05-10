@@ -1,5 +1,5 @@
-Student Name: Samien Munwar\n
-Student Set: Set A\n\n
+Student Name: Samien Munwar
+Student Set: Set A
 
 Self-graded Assignment 2 Checklist\n
 
