@@ -1,7 +1,7 @@
-Student Name: Samien Munwar
+Student Name: Samien Munwar  
 Student Set: Set A
 
-Self-graded Assignment 2 Checklist\n
+Self-graded Assignment 2 Checklist
 
 # Criteria
 
