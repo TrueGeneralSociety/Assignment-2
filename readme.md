@@ -17,4 +17,4 @@ Self-graded Assignment 2 Checklist
 - [x] The members page has a responsive grid of 3 images.
 - [x] Your site is hosted on Render or other hosting site.\n
 
-/50 (Total grade out of 50, 5 marks each x 10 items)
+50/50 (Total grade out of 50, 5 marks each x 10 items)
